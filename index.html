@@ -1,12 +1,347 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Testing 123</h1>
-</body>
+<html class="">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/Components/tailwind.config.js"></script>
+    <link rel="stylesheet" href="/Components/tailwindstyles.css" />
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+  </head>
+
+  <body>
+    <header class="bg-gray-700/50 absolute z-10 w-full">
+      <nav class="flex items-center w-[92%] w-full mx-auto">
+        <div
+          class="w-64 transition-all duration-150 cursor-pointer hover:scale-125"
+        >
+          <a href="index.html"
+            ><img src="/Assets/theme/jungle/logo.png" alt="" class="logo"
+          /></a>
+        </div>
+        <div
+          class="nav-links duration-500 md:static absolute md:min-h-fit min-h-[30vh] left-0 top-[-700%] md:bg-transparent md:w-auto w-full flex items-center px-5 ml-auto"
+        >
+          <ul
+            class="grid grid-rows-2 grid-flow-col md:flex mx-auto md:space-y-0 gap-6 py-10"
+          >
+            <li>
+              <div
+                class="button w-40 h-16 bg-skin-fill cursor-pointer select-none hover:translate-y-2 hover:[box-shadow:0_0px_0_0_var(--color)] hover:border-b-[0px] transition-all duration-150 [box-shadow:0_10px_0_0_var(--color)] rounded-full border-[1px] border-green-400"
+              >
+                <span
+                  class="flex flex-col justify-center items-center h-full text-skin-base font-bold text-lg"
+                  ><button onclick="document.location='index.html'">
+                    Home
+                  </button></span
+                >
+              </div>
+            </li>
+            <li>
+              <div
+                class="button w-40 h-16 bg-skin-fill cursor-pointer select-none hover:translate-y-2 hover:[box-shadow:0_0px_0_0_var(--color)] hover:border-b-[0px] transition-all duration-150 [box-shadow:0_10px_0_0_var(--color)] rounded-full border-[1px] border-green-400"
+              >
+                <span
+                  class="flex flex-col justify-center items-center h-full text-skin-base font-bold text-lg"
+                  ><button onclick="document.location='video.html'">
+                    Cartoon
+                  </button></span
+                >
+              </div>
+            </li>
+            <li>
+              <div
+                class="button w-40 h-16 bg-skin-fill cursor-pointer select-none hover:translate-y-2 hover:[box-shadow:0_0px_0_0_var(--color)] hover:border-b-[0px] transition-all duration-150 [box-shadow:0_10px_0_0_var(--color)] rounded-full border-[1px] border-green-400"
+              >
+                <span
+                  class="flex flex-col justify-center items-center h-full text-skin-base font-bold text-lg"
+                  ><button onclick="document.location='game.html'">
+                    Game
+                  </button></span
+                >
+              </div>
+            </li>
+            <li>
+              <div
+                class="button w-40 h-16 bg-skin-fill cursor-pointer select-none hover:translate-y-2 hover:[box-shadow:0_0px_0_0_var(--color)] hover:border-b-[0px] transition-all duration-150 [box-shadow:0_10px_0_0_var(--color)] rounded-full border-[1px] border-green-400"
+              >
+                <span
+                  class="flex flex-col justify-center items-center h-full text-skin-base font-bold text-lg"
+                  ><button onclick="document.location='about.html'">
+                    About Us
+                  </button></span
+                >
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="flex items-end gap-6 md:hidden ml-auto">
+          <ion-icon
+            onclick="onToggleMenu(this)"
+            name="menu"
+            class="text-3xl cursor-pointer"
+          ></ion-icon>
+        </div>
+      </nav>
+    </header>
+
+    <div
+      id="myModal"
+      class="flex items-center justify-center fixed left-0 bottom-0 w-full h-full bg-gray-800/70 z-10"
+    >
+      <div class="bg-white rounded-lg w-auto md:mx-10">
+        <div class="flex flex-col items-start p-4">
+          <div class="flex items-center w-full">
+            <div class="text-gray-900 font-medium text-lg">
+              Terms and Conditions
+            </div>
+          </div>
+          <hr />
+          <div class="py-10">
+            Welcome to KidsLand! Our website is designed for children aged 1-6
+            years old and is filled with theme switcher[jungle, snow, dessert],
+            fun games, interactive activities, and educational content. Our goal
+            is to provide a safe and engaging online experience for young
+            children.
+          </div>
+          <hr />
+          <div class="ml-auto">
+            <button
+              id="closeButton"
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      id="advertisement"
+      class="flex items-center justify-center fixed left-0 bottom-0 w-full h-full bg-gray-800/70 z-10"
+    >
+      <div class="bg-white rounded-lg w-auto">
+        <div class="flex flex-col items-start p-4">
+          <video src="Assets/Intro.mp4" controls onended="hideModal()"></video>
+          <div class="ml-auto">
+            <button
+              id="closeButton2"
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-full h-screen relative">
+      <div
+        class="background bg-[url('/Assets/theme/jungle/bg_image.jpg')] w-full h-full bg-cover bg-right"
+      >
+        <!-- <img class="w-full h-full object-cover" src="Assets/bg_image.jpg" /> -->
+
+        <div
+          class="absolute top-0 w-full md:w-96 h-full flex flex-col justify-center md:pl-10 md:gap-y-1"
+        >
+          <div class="text-center md:pb-12">
+            <p
+              class="mx-auto md:mx-0 font-bold text-4xl md:text-[100px] text-white"
+            >
+              WELCOME
+            </p>
+            <p
+              class="shadow mx-auto mx-0 font-bold text-4xl text-[100px] text-white opacity-75"
+            >
+              WELCOME
+            </p>
+            <p
+              class="shadow mx-auto md:mx-0 font-bold text-4xl md:text-[100px] text-white opacity-50"
+            >
+              WELCOME
+            </p>
+            <p
+              class="shadow mx-auto md:mx-0 font-bold text-4xl md:text-[100px] text-white opacity-25"
+            >
+              WELCOME
+            </p>
+          </div>
+          <div id="theme-select" class="flex xs:px-12 md:px-0">
+            <div
+              class="theme-logo hover:scale-125"
+              data-theme-id="theme-jungle"
+            >
+              <img
+                src="Assets/theme/jungle/logo.png"
+                alt="Jungle theme logo"
+                class="w-80"
+              />
+            </div>
+            <div class="theme-logo hover:scale-125" data-theme-id="theme-snow">
+              <img
+                src="Assets/theme/snow/logo.png"
+                alt="Snow theme logo"
+                class="w-80"
+              />
+            </div>
+            <div
+              class="theme-logo hover:scale-125"
+              data-theme-id="theme-desert"
+            >
+              <img
+                src="Assets/theme/desert/logo.png"
+                alt="Desert theme logo"
+                class="w-80"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <form id="theme-form">
+      <input type="hidden" id="theme-input" name="theme" value="" />
+    </form>
+
+    <script>
+      // Get the modals
+      const modal1 = document.getElementById("myModal");
+      const modal2 = document.getElementById("advertisement");
+      const video = document.querySelector("video");
+
+      // Get the close buttons
+      const closeButton1 = document.getElementById("closeButton");
+      const closeButton2 = document.getElementById("closeButton2");
+
+      // Get the state from local storage or default to false
+      const modal1State =
+        JSON.parse(localStorage.getItem("modal1State")) || true;
+      const modal2State =
+        JSON.parse(localStorage.getItem("modal2State")) || false;
+
+      // Set the state of the modals based on the stored state
+      modal1.style.display = modal1State ? "" : "none";
+      modal2.style.display = modal2State ? "" : "none";
+
+      // Add event listeners to the close buttons
+      closeButton1.addEventListener("click", function () {
+        modal1.style.display = "none";
+        modal2.style.display = "";
+        localStorage.setItem("modal1State", false);
+        localStorage.setItem("modal2State", true);
+      });
+
+      closeButton2.addEventListener("click", function () {
+        modal2.style.display = "none";
+        localStorage.setItem("modal2State", false);
+      });
+
+      // Add an event listener to the close button
+      closeButton2.addEventListener("click", function () {
+        modal2.style.display = "none";
+        localStorage.setItem("modal2State", false);
+        video.pause();
+      });
+
+      function hideModal() {
+        modal2.style.display = "none";
+        localStorage.setItem("modal2State", false);
+      }
+
+      /////////////////
+
+      const navLinks = document.querySelector(".nav-links");
+      function onToggleMenu(e) {
+        e.name = e.name === "menu" ? "close" : "menu";
+        navLinks.classList.toggle("top-[9%]");
+      }
+
+      const logos = document.querySelectorAll(".theme-logo");
+      const input = document.querySelector("#theme-input");
+      const htmlElement = document.querySelector("html");
+      const logoElement = document.querySelector(".logo");
+      const bgElement = document.querySelector(".background");
+
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme) {
+        htmlElement.className = savedTheme;
+        if (htmlElement.classList.contains("theme-snow")) {
+          logoElement.src = "/Assets/theme/snow/logo.png";
+          bgElement.style.backgroundImage =
+            "url('/Assets/theme/snow/bg_image.jpg')";
+        } else if (htmlElement.classList.contains("theme-jungle")) {
+          logoElement.src = "/Assets/theme/jungle/logo.png";
+          bgElement.style.backgroundImage =
+            "url('/Assets/theme/jungle/bg_image.jpg')";
+        } else if (htmlElement.classList.contains("theme-desert")) {
+          logoElement.src = "/Assets/theme/desert/logo.png";
+          bgElement.style.backgroundImage =
+            "url('/Assets/theme/desert/bg_image.jpg')";
+        }
+      }
+      logos.forEach((logo) => {
+        logo.addEventListener("click", (event) => {
+          const theme = event.currentTarget.getAttribute("data-theme-id");
+          input.value = theme;
+          htmlElement.className = theme;
+          if (htmlElement.classList.contains("theme-snow")) {
+            logoElement.src = "/Assets/theme/snow/logo.png";
+            bgElement.style.backgroundImage =
+              "url('/Assets/theme/snow/bg_image.jpg')";
+          } else if (htmlElement.classList.contains("theme-jungle")) {
+            logoElement.src = "/Assets/theme/jungle/logo.png";
+            bgElement.style.backgroundImage =
+              "url('/Assets/theme/jungle/bg_image.jpg')";
+          } else if (htmlElement.classList.contains("theme-desert")) {
+            logoElement.src = "/Assets/theme/desert/logo.png";
+            bgElement.style.backgroundImage =
+              "url('/Assets/theme/desert/bg_image.jpg')";
+          }
+          localStorage.setItem("theme", theme);
+        });
+      });
+
+      const shadows = document.querySelectorAll(".shadow");
+
+      function showShadows() {
+        shadows.forEach((shadow) => {
+          shadow.style.display = "block";
+        });
+      }
+
+      function hideShadows() {
+        shadows.forEach((shadow) => {
+          shadow.style.display = "none";
+        });
+      }
+
+      if (window.innerWidth >= 640) {
+        // The viewport is at least 640 pixels wide
+        showShadows();
+      } else {
+        // The viewport is less than 640 pixels wide
+        hideShadows();
+      }
+
+      // Listen for changes to the viewport width
+      window.addEventListener("resize", () => {
+        if (window.innerWidth >= 640) {
+          // The viewport is at least 640 pixels wide
+          showShadows();
+        } else {
+          // The viewport is less than 640 pixels wide
+          hideShadows();
+        }
+      });
+    </script>
+  </body>
 </html>
